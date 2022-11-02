@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<title>Maths Calculator</title>
+
+<style>
+body {font-family: arial, "sans-serif";}
+</style>
+<Form>
+
+    <p> First number:</p>
+    <input type="text"  id= "first" value="">
+    <p> Second number:</p>
+    <input type="text" id ="second" value=""> 
+    <br><br>
+    <button value = "plus" onclick = "button_type(this)" type="button">+</button><br><br>
+    <button value = "minus" onclick = "button_type(this)" type="button">-</button><br><br>
+    <button value = "times" onclick = "button_type(this)" type="button">*</button><br><br>
+    <button value = "divide" onclick = "button_type(this)" type="button">/</button><br><br>
+    <p> My answer:</p>
+    <input type="text" name="answer" id ="my_answer" value ="">
+    <p> Correct answer:</p> 
+    <input type="text" name="answer" id="correct_number" value ="">
+    <button onclick = "correct_answer()" type="button" >Show answer</button>
+     <p> Number wrong: <input type="text" id = "number_wrong" value = 0.00> </p>
+     <p> Number Correct: <input type="text" id="number_correct" value = 0.00> </p>
+     <p> Percentage correct: <input type="text" id ="percentage_correct" name="answer" value = 0.00> </p>
+   
+     <script>
+      function correct_answer(){
+      var second_number = parseFloat(document.getElementById("second").value);
+      var first_number= parseFloat(document.getElementById("first").value);
+      var result_number = 0.00;    
+     
+     
+     if(window.b_mem == "plus")
+      {
+       result_number = first_number + second_number;
+      }
+      else if (window.b_mem == "minus")
+      {
+       result_number = first_number - second_number;
+      }
+      else if (window.b_mem == "times")
+      {
+       result_number = first_number * second_number;
+      }
+      else 
+      {
+       result_number = first_number/second_number;
+      }
+
+     document.getElementById("correct_number").value = result_number;
+    
+    var my_answer = 0.00;
+    my_answer = parseFloat(document.getElementById("my_answer").value);
+     var number_wrong = 0;
+    number_wrong = parseInt(document.getElementById("number_wrong").value);
+     var number_correct = 0;
+      number_correct = parseInt(document.getElementById("number_correct").value);
+    
+
+     if(my_answer == result_number)
+     {
+      number_correct = number_correct + 1;
+      document.getElementById("number_correct").value = number_correct;
+     } 
+     else
+     {
+      number_wrong = number_wrong + 1;
+      document.getElementById("number_wrong").value = number_wrong;
+     }
+     document.getElementById("percentage_correct").value = ((number_correct/(number_wrong + number_correct))*100);
+     
+       
+
+      }
+      function button_type(element){
+        window.b_mem = element.value;
+       
+      }
+        
+       
+     </script>
+
+
+
+</Form> 
+</html>
